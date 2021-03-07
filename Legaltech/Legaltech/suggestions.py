@@ -37,33 +37,28 @@ def get_top_suggestions_from_article(current_article, articles, limit=10):
     return sorted_articles
 
 
-train_tokens = []
-with open('legislatie/codul_civil') as f:
-    content = f.read()
-    lines = content.split("\nArticolul ")
-    formated_lines = []
-    [formated_lines.append(f"Articolul {line}") for line in lines]
-    x = 0
-    for line in formated_lines:
-        #print(x)
-        #print(line)
-        x += 1
-        train_tokens.append(utils.text_to_tokens(line))
-
-
-#print(train_tokens)
-
-
 # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet
 # Multiple tests were done and the parameters which behaved the best were selected
 model = gensim.models.Word2Vec.load('word2vec.model')
 
 print("Model loaded")
 articles = []
-id = 0
-for line in formated_lines:
-    articles.append(article.Article(line, utils.text_to_coords(model, line), id))
-    id += 1
+
+def add_articles_from_file(filename, filecode):
+    with open(filename) as f:
+        content = f.read()
+        lines = content.split("\nArticolul ")
+        formated_lines = []
+        [formated_lines.append(f"Articolul {line}") for line in lines]
+        id = 0
+        for line in formated_lines:
+            articles.append(article.Article(line, utils.text_to_coords(model, line), f"{filecode}_{id}"))
+            id += 1
+
+
+for (filename, filecode) in [('legislatie/codul_penal', 'cp'), ('legislatie/codul_civil', 'cc')]:
+    add_articles_from_file(filename, filecode)
+
 
 searched_article = articles[998]
 suggestions = get_top_suggestions_from_article(searched_article, articles)

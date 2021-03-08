@@ -26,12 +26,12 @@ def get_top_suggestions_from_text(current_text, articles, limit=10):
 
 def get_top_suggestions_from_article(current_article, articles, limit=10):
     distances = []
-    [distances.append((dist_between_coords(current_article.coords, article.coords), article)) for article in articles]
+    [distances.append((dist_between_coords(current_article.coords, article.coords), article.id, article)) for article in articles]
     sorted_distances = sorted(distances)
     sorted_articles = []
     for distance in sorted_distances:
-        if distance[1].id != current_article.id:
-            sorted_articles.append(distance[1])
+        if distance[1] != current_article.id:
+            sorted_articles.append(distance[2])
     if limit:
         sorted_articles = sorted_articles[0: limit]
     return sorted_articles
@@ -47,7 +47,7 @@ articles = []
 def add_articles_from_file(filename, filecode):
     with open(filename) as f:
         content = f.read()
-        lines = content.split("\nArticolul ")
+        lines = content.split("    Articolul ")
         formated_lines = []
         [formated_lines.append(f"Articolul {line}") for line in lines]
         id = 0
@@ -56,11 +56,11 @@ def add_articles_from_file(filename, filecode):
             id += 1
 
 
-for (filename, filecode) in [('legislatie/codul_penal', 'cp'), ('legislatie/codul_civil', 'cc')]:
+for (filename, filecode) in [('legislatie/md/codul_penal', 'md_cp')]:# ('legislatie/md/codul_civil', 'md_cc')]:
     add_articles_from_file(filename, filecode)
 
 
-searched_article = articles[998]
+searched_article = articles[108]
 suggestions = get_top_suggestions_from_article(searched_article, articles)
 print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 print(searched_article.text)

@@ -7,14 +7,14 @@ train_tokens = []
 def add_tokens_from_file(filename):
     with open(filename) as f:
         content = f.read()
-        lines = content.split("\nArticolul ")
+        lines = content.split("    Articolul ")
         formated_lines = []
         [formated_lines.append(f"Articolul {line}") for line in lines]
         for line in formated_lines:
             train_tokens.append(utils.text_to_tokens(line))
 
 
-for filename in ['legislatie/codul_penal', 'legislatie/codul_civil']:
+for filename in ['legislatie/md/codul_penal']:
     add_tokens_from_file(filename)
 
 # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet

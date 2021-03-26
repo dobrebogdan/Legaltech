@@ -121,14 +121,10 @@ USE_TZ = True
 
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
-print("##############")
-print(SETTINGS_PATH)
 TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
 )
 
-print("!!!!!!!!!!!!!!!!!!!!")
-print(os.path.join(BASE_DIR, 'static'))
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),

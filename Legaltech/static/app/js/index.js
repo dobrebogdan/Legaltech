@@ -1,5 +1,7 @@
-function reloadResults(newText) {
-
+function reloadResults(outputJSON) {
+    const jsonObj = JSON.parse(outputJSON);
+    const outputText = jsonObj.response;
+    console.log(outputText);
 }
 
 function sendHttpRequest(theUrl, input, callback)

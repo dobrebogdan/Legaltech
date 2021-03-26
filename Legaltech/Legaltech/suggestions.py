@@ -1,8 +1,11 @@
-import gensim
 import math
-import article
-import utils
 
+import gensim
+
+import Legaltech.article as article
+import Legaltech.utils as utils
+
+articles = []
 
 def dist_between_coords(coords1, coords2):
     dist = 0.0
@@ -12,7 +15,7 @@ def dist_between_coords(coords1, coords2):
     return dist
 
 
-def get_top_suggestions_from_text(current_text, articles, limit=10):
+def get_top_suggestions_from_text(current_text, limit=10):
     distances = []
     [distances.append((dist_between_coords(utils.text_to_coords(current_text), article.coords), article)) for article in articles]
     sorted_distances = sorted(distances)
@@ -24,7 +27,7 @@ def get_top_suggestions_from_text(current_text, articles, limit=10):
     return sorted_articles
 
 
-def get_top_suggestions_from_article(current_article, articles, limit=10):
+def get_top_suggestions_from_article(current_article, limit=10):
     distances = []
     [distances.append((dist_between_coords(current_article.coords, article.coords), article.id, article)) for article in articles]
     sorted_distances = sorted(distances)
@@ -42,7 +45,6 @@ def get_top_suggestions_from_article(current_article, articles, limit=10):
 model = gensim.models.Word2Vec.load('word2vec.model')
 
 print("Model loaded")
-articles = []
 
 def add_articles_from_file(filename, filecode):
     with open(filename) as f:
@@ -61,7 +63,7 @@ for (filename, filecode) in [('legislatie/md/codul_penal', 'md_cp')]:# ('legisla
 
 
 searched_article = articles[108]
-suggestions = get_top_suggestions_from_article(searched_article, articles)
+suggestions = get_top_suggestions_from_article(searched_article)
 print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 print(searched_article.text)
 for suggestion in suggestions:

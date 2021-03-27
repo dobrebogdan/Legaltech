@@ -2,7 +2,6 @@ import spacy
 from stop_words import get_stop_words
 
 stop_words = get_stop_words('ro')
-
 nlp = spacy.load("ro_core_news_sm")
 
 # method that turns a text into a list of lemmatized words (tokens).
@@ -11,7 +10,6 @@ def text_to_tokens(curr_str):
     for i in range(0, len(curr_str)):
         if (not curr_str[i] == " ") and (not curr_str[i].isalpha()):
             curr_str = curr_str.replace(curr_str[i], " ")
-
 
     # turining the text to lowercase
     curr_str = curr_str.lower()

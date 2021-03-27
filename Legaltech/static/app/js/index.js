@@ -1,7 +1,16 @@
 function reloadResults(outputJSON) {
     const jsonObj = JSON.parse(outputJSON);
-    const outputText = jsonObj.response;
-    console.log(outputText);
+    const outputList = jsonObj.response;
+    const resultsList = document.getElementById("resultsList");
+    for(var i = 0; i < outputList.length; i++) {
+        var node = document.createElement("LI");
+        var textnode = document.createTextNode(outputList[i]);
+        node.appendChild(textnode);
+        console.log("NODE");
+        console.log(node);
+        console.log(outputList[i]);
+        resultsList.appendChild(node);
+    }
 }
 
 function sendHttpRequest(theUrl, input, callback)
@@ -15,8 +24,6 @@ function sendHttpRequest(theUrl, input, callback)
     xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttpRequest.send("param=" + input);
 }
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {

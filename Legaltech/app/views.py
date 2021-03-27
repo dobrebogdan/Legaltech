@@ -9,7 +9,7 @@ def index(request):
 @csrf_exempt
 def getevents(request):
     text = request.POST.get("param")
-    articles = []
+    articles = get_top_suggestions_from_text(text)
     response = []
     for article in articles:
         response.append(article.text)

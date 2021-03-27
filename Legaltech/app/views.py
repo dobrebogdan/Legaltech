@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-# TODO: Fix this import error
-# from Legaltech.suggestions import get_top_suggestions_from_text
+from Legaltech.suggestions import get_top_suggestions_from_text
 
 def index(request):
     return render(request, 'app/index.html', {})

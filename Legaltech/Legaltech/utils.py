@@ -32,7 +32,6 @@ def text_to_tokens(curr_str):
 
 
 def text_to_coords(model, curr_str):
-    print("CONVERSION BEGIN")
     # get the lemmatized tokens from text
     tokens = text_to_tokens(curr_str)
     # the sum vector of all vectors of words that are found in the model's vocabulary
@@ -58,5 +57,4 @@ def text_to_coords(model, curr_str):
 
     # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt
-    print("CONVERSION END")
     return sum

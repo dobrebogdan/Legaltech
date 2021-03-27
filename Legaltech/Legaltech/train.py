@@ -14,7 +14,7 @@ def add_tokens_from_file(filename):
             train_tokens.append(utils.text_to_tokens(line))
 
 
-for filename in ['legislatie/md/codul_penal']:
+for filename in ['legislatie/ro/codul_penal']:
     add_tokens_from_file(filename)
 
 # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet

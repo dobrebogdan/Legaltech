@@ -42,9 +42,7 @@ def get_top_suggestions_from_article(current_article, limit=10):
 
 # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet
 # Multiple tests were done and the parameters which behaved the best were selected
-model = gensim.models.Word2Vec.load('word2vec.model')
-
-print("Model loaded")
+model = gensim.models.Word2Vec.load('Legaltech/word2vec.model')
 
 def add_articles_from_file(filename, filecode):
     with open(filename) as f:
@@ -58,14 +56,6 @@ def add_articles_from_file(filename, filecode):
             id += 1
 
 
-for (filename, filecode) in [('legislatie/md/codul_penal', 'md_cp')]:# ('legislatie/md/codul_civil', 'md_cc')]:
+for (filename, filecode) in [('Legaltech/legislatie/ro/codul_penal', 'ro_cp')]:
     add_articles_from_file(filename, filecode)
 
-
-searched_article = articles[108]
-suggestions = get_top_suggestions_from_article(searched_article)
-print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-print(searched_article.text)
-for suggestion in suggestions:
-    print("------------------------------------")
-    print(suggestion.text)

@@ -2,13 +2,12 @@ function reloadResults(outputJSON) {
     const jsonObj = JSON.parse(outputJSON);
     const outputList = jsonObj.response;
     const resultsList = document.getElementById("resultsList");
+    resultsList.innerHTML = '';
     for(var i = 0; i < outputList.length; i++) {
-        var node = document.createElement("LI");
+        var node = document.createElement('LI');
         var textnode = document.createTextNode(outputList[i]);
         node.appendChild(textnode);
-        console.log("NODE");
-        console.log(node);
-        console.log(outputList[i]);
+        node.appendChild(document.createElement('HR'))
         resultsList.appendChild(node);
     }
 }

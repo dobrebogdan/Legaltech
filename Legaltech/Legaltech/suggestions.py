@@ -45,7 +45,8 @@ def get_top_suggestions_from_article(current_article, limit=10):
 def add_articles_from_file(filename, filecode):
     with open(filename) as f:
         content = f.read()
-        lines = content.split("    Articolul ")
+
+        lines = content.split("$Articolul ")
         formated_lines = []
         [formated_lines.append(f"Articolul {line}") for line in lines]
         id = 0

@@ -54,5 +54,7 @@ def text_to_coords(model, curr_str):
                 pass
 
     # divide to the number of words that exist in the model's vocabulary to get the average
+    if sum == []:
+        print('No relevant references found')
     sum = sum / cnt
     return sum

@@ -7,7 +7,7 @@ train_tokens = []
 def add_tokens_from_file(filename):
     with open(filename) as f:
         content = f.read()
-        lines = content.split("    Articolul ")
+        lines = content.split("$Articolul ")
         formated_lines = []
         [formated_lines.append(f"Articolul {line}") for line in lines]
         for line in formated_lines:
@@ -23,7 +23,7 @@ model = gensim.models.Word2Vec(min_count=5,
                      window=10,
                      size=300,
                      sample=5e-5,
-                     alpha=0.01,
+                     alpha=0.1,
                      min_alpha=0.01,
                      workers=4)
 

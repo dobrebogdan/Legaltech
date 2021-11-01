@@ -11,12 +11,7 @@ body = """
   </soap:Body>
 </soap:Envelope>
 """
-
-
-
 response = requests.post(url, data = body, headers = headers)
-print(response)
-print(response.text)
 """
 <numarDosar>2779/108/2019</numarDosar>
 <institutie>CurteadeApelTIMISOARA</institutie>

@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", () => {
         const searchArea = document.getElementById("searchInput");
-        sendHttpRequest("http://127.0.0.1:8000/app/getevents", searchArea.value, reloadResults);
+        sendHttpRequest("http://127.0.0.1:8000/app/getlaws", searchArea.value, reloadResults);
     })
 });

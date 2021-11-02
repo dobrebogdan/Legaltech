@@ -2,3 +2,9 @@ hr {
     color: red;
     height: 5px;
 }
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+}

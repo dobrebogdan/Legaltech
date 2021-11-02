@@ -26,7 +26,7 @@ def get_cases(obiect_dosar, institutie='CurteadeApelBUCURESTI'):
 document_number = None
 def get_ids_and_solutions(obiect_dosar, institutie='CurteadeApelBUCURESTI'):
     ids_and_solutions = []
-    cases = get_cases(obiect_dosar, institutie)
+    cases = get_cases(obiect_dosar=obiect_dosar, institutie=institutie)
     xml_tree_root = ET.fromstring(cases)
     for xml_file_element in xml_tree_root.iter('{portalquery.just.ro}DosarSedinta'):
         children = list(xml_file_element)
@@ -39,5 +39,3 @@ def get_ids_and_solutions(obiect_dosar, institutie='CurteadeApelBUCURESTI'):
                 ids_and_solutions.append((document_number, solution_summary))
     return ids_and_solutions
 
-ids_and_solutions = get_ids_and_solutions(obiect_dosar='divort')
-print(ids_and_solutions)

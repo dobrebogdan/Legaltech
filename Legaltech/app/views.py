@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from Legaltech.suggestions import get_top_suggestions_from_text
-from Legaltech.portal_just import get_ids_and_solutions
+from Legaltech.portal_just import get_ids_and_solutions, get_cases
 
 def index(request):
     return render(request, 'app/index.html', {})
@@ -18,6 +18,12 @@ def get_laws(request):
 
 @csrf_exempt
 def get_cases(request):
-    cases = get_ids_and_solutions(obiect_dosar='furt')
+    param = request.POST.get("param").split(',')
+    obiect_dosar = ''
+    institutie = ''
+    if len(param) >= 1:
+        obiect_dosar = param[0]
+    if len(param) >= 2:
+        institutie = param[1]
+    cases = get_ids_and_solutions(obiect_dosar=obiect_dosar, institutie=institutie)
     return JsonResponse({'response': cases})
-

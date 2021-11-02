@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load static %}
-    <script type="text/javascript" src="{% static 'app/js/index.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
-</head>
-</head>
-<body>
-    <h2>Search for laws</h2>
-    <input id="searchInput" type="text" placeholder="Type something..." autocomplete="off"/>
-    <button id="searchButton">Search</button>
-    <ul id="resultsList">
-    </ul>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <script type="text/javascript" src="{% static 'app/js/index.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
+    </head>
+    <body>
+        <div id="lawSearchArea"/>
+            <h2>Search for laws</h2>
+            <input id="lawSearchInput" type="text" placeholder="Type something..." autocomplete="off"/>
+            <button id="lawSearchButton">Search</button>
+            <ul id="lawResultsList">
+            </ul>
+        </div>
+        <div id="caseSearchArea"/>
+            <h2>Search for cases</h2>
+            <label>Tribunal</label>
+            <input id="tribunalInput" value="CurteadeApelBUCURESTI"/>
+            <label>Obiect</label>
+            <input id="obiectInput"/>
+            <button id="caseSearchButton">Search</button>
+            <ul id="caseResultsList">
+            </ul>
+        </div>
+    </body>
 </html>

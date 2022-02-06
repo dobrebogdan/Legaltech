@@ -2,7 +2,7 @@ import spacy
 from stop_words import get_stop_words
 
 stop_words = get_stop_words('ro')
-nlp = spacy.load("ro_core_news_sm")
+nlp = spacy.load("ro_core_news_md")
 
 # method that turns a text into a list of lemmatized words (tokens).
 def text_to_tokens(curr_str):

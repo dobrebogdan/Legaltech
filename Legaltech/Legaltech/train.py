@@ -1,26 +1,19 @@
 import gensim
 import utils
-
-filenames = ['legislatie/ro/codul_administrativ', 'legislatie/ro/codul_civil', 'legislatie/ro/codul_fiscal',
-                 'legislatie/ro/codul_muncii', 'legislatie/ro/codul_penal']
+import csv
 
 train_tokens = []
 
 
 def add_tokens_from_file(filename):
-    with open(filename) as f:
-        content = f.read()
-        lines = content.split("$Articolul ")
-        formated_lines = []
-        [formated_lines.append(f"Articolul {line}") for line in lines[1:]]
-        for line in formated_lines:
-            print("$$$$")
-            print(line)
-            train_tokens.append(utils.text_to_tokens(line))
+    with open(filename) as tsvfile:
+        tsv_reader = csv.reader(tsvfile, delimiter='\t')
+        for line in tsv_reader:
+            train_tokens.append(utils.text_to_tokens(line[2]))
 
 
-for filename in filenames:
-    add_tokens_from_file(filename)
+
+add_tokens_from_file('legislatie/legislatie_completa.tsv')
 
 # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet
 # Multiple tests were done and the parameters which behaved the best were selected

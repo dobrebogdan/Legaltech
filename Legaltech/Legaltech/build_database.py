@@ -11,7 +11,6 @@ for (filename, filecode) in [('legislatie/ro/codul_penal', 'ro_cp'),
         for line in formated_lines:
             articles.append((filecode, line))
 
-print(articles)
 
 with open('legislatie/legislatie_completa.tsv', 'w') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t')

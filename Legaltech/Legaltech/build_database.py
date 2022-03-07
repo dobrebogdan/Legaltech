@@ -1,15 +1,13 @@
 import csv
-articles = []
 
+articles = []
 for (filename, filecode) in [('legislatie/ro/codul_penal', 'ro_cp'),
                              ('legislatie/ro/codul_civil', 'ro_cc')]:
-    with open(filename) as f:
-        content = f.read()
-        lines = content.split("$Articolul ")[1:]
-        formated_lines = []
-        [formated_lines.append(f"Articolul {line}") for line in lines]
-        for line in formated_lines:
-            articles.append((filecode, line))
+    with open(filename) as file:
+        tsv_file = csv.reader(file, delimiter="\t")
+        for lines in tsv_file:
+            for line in lines:
+                articles.append((filecode, line))
 
 
 with open('legislatie/legislatie_completa.tsv', 'w') as tsvfile:

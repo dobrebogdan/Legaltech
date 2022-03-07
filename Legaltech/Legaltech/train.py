@@ -25,6 +25,7 @@ model = gensim.models.Word2Vec(min_count=5,
                      workers=4)
 
 # Building the model's vocabulary and training the model
+print(train_tokens)
 model.build_vocab(train_tokens, progress_per=10000)
 model.train(train_tokens, total_examples=model.corpus_count, epochs=100)
 

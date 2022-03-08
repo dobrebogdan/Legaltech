@@ -1,17 +1,35 @@
 import spacy
 from stop_words import get_stop_words
+from nltk.stem.snowball import RomanianStemmer
 
 stop_words = get_stop_words('ro')
+stop_words.extend(["articol", "lege", "ordin", "monitor", "oficial", "decizie", "pedeapsa"])
 nlp = spacy.load("ro_core_news_md")
+stemmer = RomanianStemmer()
+stop_words = [stemmer.stem(stop_word) for stop_word in stop_words]
 
-# method that turns a text into a list of lemmatized words (tokens).
+def replace_diacritics(curr_str):
+    diacritics_pairs = [
+        ("Ă", "A"),  ("ă",  "a"),
+        ("Â", "A"),   ("â",  "a"),
+        ("Î", "I"),  ("î",  "i"),
+        ("Ș", "S"), ("ș", "s"),
+        ("Ț", "T"), ("ț", "t")
+    ]
+    for curr_pair in diacritics_pairs:
+        curr_str = curr_str.replace(curr_pair[0], curr_pair[1])
+    return curr_str
+
+
+# method that turns a text into a list of stemmed words (tokens).
 def text_to_tokens(curr_str):
     # removal of punctuation and other characters from the text
     for i in range(0, len(curr_str)):
         if (not curr_str[i] == " ") and (not curr_str[i].isalpha()):
             curr_str = curr_str.replace(curr_str[i], " ")
 
-    # turining the text to lowercase
+    curr_str = replace_diacritics(curr_str)
+    # turning the text to lowercase
     curr_str = curr_str.lower()
 
     # Returns an object of type Doc, which is a sequence of Token objects
@@ -19,18 +37,18 @@ def text_to_tokens(curr_str):
     # A list of valid tokens
     good_tokens = []
     for token in tokens:
-        # Gets the lemmatized token from the Token object
-        lemma = token.lemma_
+        # Gets the stemmed token from the Token object
+        stem = stemmer.stem(token.text)
         # Checks token validity
-        if lemma == "" or lemma in stop_words:
+        if stem == "" or stem in stop_words:
             continue
         # Adds token to list
-        good_tokens.append(lemma)
+        good_tokens.append(stem)
     return good_tokens
 
 
 def text_to_coords(model, curr_str):
-    # get the lemmatized tokens from text
+    # get the stemmed tokens from text
     tokens = text_to_tokens(curr_str)
     # the sum vector of all vectors of words that are found in the model's vocabulary
     sum = []
@@ -53,8 +71,10 @@ def text_to_coords(model, curr_str):
             except:
                 pass
 
-    # divide to the number of words that exist in the model's vocabulary to get the average
+    # No relevant references
     if sum == []:
-        print('No relevant references found')
+        return model.wv["articol"]
+
+    # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt
     return sum

@@ -28,10 +28,10 @@ def get_extended_stopwords():
     legal_stopwords = []
     # depending on how this function was ran, the relative path may be different
     try:
-        with open("Legaltech/legal_stopwords", "r") as legal_stopwords_file:
+        with open("Legaltech/legal_stopwords_ro", "r") as legal_stopwords_file:
             legal_stopwords.extend(legal_stopwords_file.read().split())
     except:
-        with open("legal_stopwords", "r") as legal_stopwords_file:
+        with open("legal_stopwords_ro", "r") as legal_stopwords_file:
             legal_stopwords.extend(legal_stopwords_file.read().split())
 
     stop_words.extend(legal_stopwords)
@@ -64,8 +64,8 @@ def text_to_tokens(curr_str):
     return good_tokens
 
 
-def text_to_coords(curr_str):
-    model = gensim.models.Word2Vec.load('Legaltech/word2vec.model')
+def text_to_coords(curr_str, lang='ro'):
+    model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.{lang}')
     # get the stemmed tokens from text
     tokens = text_to_tokens(curr_str)
     # the sum vector of all vectors of words that are found in the model's vocabulary
@@ -91,7 +91,10 @@ def text_to_coords(curr_str):
 
     # No relevant references
     if sum == []:
-        return model.wv[stemmer.stem("articol")]
+        stopword = 'articol'
+        if lang == 'en':
+            stopword = 'article'
+        return model.wv[stemmer.stem(stopword)]
 
     # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt

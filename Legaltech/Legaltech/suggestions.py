@@ -47,5 +47,5 @@ def add_articles_from_file(filename):
         for line in tsv_reader:
             articles.append(article.Article(line[2], utils.text_to_coords(line[2]), f"{line[1]}_{line[0]}"))
 
-
-add_articles_from_file('Legaltech/legislatie/legislatie_completa.tsv')
+lang = 'ro'
+add_articles_from_file(f'Legaltech/legislatie/legislatie_completa_{lang}.tsv')

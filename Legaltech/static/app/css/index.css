@@ -1,10 +1,13 @@
 body {
-    background-color: #8093F1;
-    color: #FFFFEA;
+    background-color: #FFFFFF;
+    color: #2E282A;
 }
 
+button {
+    background-color: #FFFFFF;
+}
 hr {
-    color: #BF211E;
+    color: #AB3428;
 }
 
 #content-container {
@@ -14,6 +17,6 @@ hr {
 }
 
 .search-area {
-    background-color: #18206F;
-    color: #F5F1ED;
+    background-color: #C0D6DF;
+    color: #2E282A;
 }

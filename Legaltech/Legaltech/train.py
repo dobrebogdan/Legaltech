@@ -1,5 +1,5 @@
 import gensim
-import utils
+from utils import text_to_tokens
 import csv
 
 train_tokens = []
@@ -9,7 +9,7 @@ def add_tokens_from_file(filename):
     with open(filename) as tsvfile:
         tsv_reader = csv.reader(tsvfile, delimiter='\t')
         for line in tsv_reader:
-            train_tokens.append(utils.text_to_tokens(line[2]))
+            train_tokens.append(text_to_tokens(line[2]))
 
 
 
@@ -25,8 +25,7 @@ model = gensim.models.Word2Vec(min_count=5,
                      workers=4)
 
 # Building the model's vocabulary and training the model
-print(train_tokens)
-model.build_vocab(train_tokens, progress_per=10000)
+model.build_vocab(train_tokens, progress_per=100)
 model.train(train_tokens, total_examples=model.corpus_count, epochs=100)
 
 # Keeping only the current vectors to save memory

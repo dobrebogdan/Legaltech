@@ -1,33 +1,48 @@
+import gensim
 import spacy
 from stop_words import get_stop_words
 from nltk.stem.snowball import RomanianStemmer
 
-stop_words = get_stop_words('ro')
-stop_words.extend(["articol", "lege", "ordin", "monitor", "oficial", "decizie", "pedeapsa"])
+
 nlp = spacy.load("ro_core_news_md")
 stemmer = RomanianStemmer()
-stop_words = [stemmer.stem(stop_word) for stop_word in stop_words]
+
+def replace_nonletters(curr_str):
+    for i in range(0, len(curr_str)):
+        if (not curr_str[i] == " ") and (not curr_str[i].isalpha()):
+            curr_str = curr_str.replace(curr_str[i], " ")
+    return curr_str
+
 
 def replace_diacritics(curr_str):
-    diacritics_pairs = [
-        ("Ă", "A"),  ("ă",  "a"),
-        ("Â", "A"),   ("â",  "a"),
-        ("Î", "I"),  ("î",  "i"),
-        ("Ș", "S"), ("ș", "s"),
-        ("Ț", "T"), ("ț", "t")
-    ]
+    diacritics_pairs = [ ("Ă", "A"),  ("ă",  "a"), ("Â", "A"), ("â",  "a"), ("Î", "I"), ("î",  "i"), ("Ș", "S"),
+                         ("ș", "s"), ("ş", "s"), ("Ț", "T"), ("ț", "t")]
     for curr_pair in diacritics_pairs:
         curr_str = curr_str.replace(curr_pair[0], curr_pair[1])
     return curr_str
 
 
+def get_extended_stopwords():
+    stop_words = get_stop_words('ro')
+    stop_words = [stemmer.stem(stop_word) for stop_word in stop_words]
+    legal_stopwords = []
+    # depending on how this function was ran, the relative path may be different
+    try:
+        with open("Legaltech/legal_stopwords", "r") as legal_stopwords_file:
+            legal_stopwords.extend(legal_stopwords_file.read().split())
+    except:
+        with open("legal_stopwords", "r") as legal_stopwords_file:
+            legal_stopwords.extend(legal_stopwords_file.read().split())
+
+    stop_words.extend(legal_stopwords)
+    return stop_words
+
 # method that turns a text into a list of stemmed words (tokens).
 def text_to_tokens(curr_str):
+    stop_words = get_extended_stopwords()
     # removal of punctuation and other characters from the text
-    for i in range(0, len(curr_str)):
-        if (not curr_str[i] == " ") and (not curr_str[i].isalpha()):
-            curr_str = curr_str.replace(curr_str[i], " ")
-
+    curr_str = replace_nonletters(curr_str)
+    # replacement of diacritics with their corresponding regular symbols
     curr_str = replace_diacritics(curr_str)
     # turning the text to lowercase
     curr_str = curr_str.lower()
@@ -42,12 +57,15 @@ def text_to_tokens(curr_str):
         # Checks token validity
         if stem == "" or stem in stop_words:
             continue
+        if not stem[0].isalpha():
+            continue
         # Adds token to list
         good_tokens.append(stem)
     return good_tokens
 
 
-def text_to_coords(model, curr_str):
+def text_to_coords(curr_str):
+    model = gensim.models.Word2Vec.load('Legaltech/word2vec.model')
     # get the stemmed tokens from text
     tokens = text_to_tokens(curr_str)
     # the sum vector of all vectors of words that are found in the model's vocabulary
@@ -73,7 +91,7 @@ def text_to_coords(model, curr_str):
 
     # No relevant references
     if sum == []:
-        return model.wv["articol"]
+        return model.wv[stemmer.stem("articol")]
 
     # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt

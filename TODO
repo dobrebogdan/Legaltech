@@ -1,9 +1,4 @@
 CORE:
-- Antreneaza pe toata limba romana
-- Fa sa mearga cu diacritice
-- Adauga o metrica separata de similaritate intre texte (ceva mai basic)
-- Integreaza mai bine tot
-- Extinde stopwords
 - Permite adaugarea de fisiere in ro si eng
 - Creat de scoruri pentru traduceri
 - Spearman pentru rezultate
@@ -12,3 +7,9 @@ EXTRA:
 - Aplicatia ar putea fi bilingual
 - Pezentarea ar putea fi imbunatatita
 - Permite adaugarea de fisiere de legislatie noi din aplicatie
+- Adauga o metrica separata de similaritate intre texte (ceva mai basic)
+
+DONE:
+- Extinderea stopwords in mod programatic
+- Fa sa mearga si pe diacritice
+- Antreneaza word2vec strict pe articole

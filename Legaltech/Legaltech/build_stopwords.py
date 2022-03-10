@@ -4,15 +4,20 @@ from stop_words import get_stop_words
 from nltk.stem.snowball import RomanianStemmer, EnglishStemmer
 from utils import replace_diacritics, replace_nonletters
 
+romanian_stemmer = RomanianStemmer()
+english_stemmer = EnglishStemmer()
+
+romanian_pipeline = spacy.load('ro_core_news_md')
+english_pipeline = spacy.load('en_core_web_md')
+
 def build_stopwords(lang='ro'):
     stop_words = get_stop_words(lang)
-    pipeline = 'ro_core_news_md'
+    nlp = romanian_pipeline
     if lang == 'en':
-        pipeline='en_core_web_md'
-    nlp = spacy.load(pipeline)
-    stemmer = RomanianStemmer()
+        nlp = english_pipeline
+    stemmer = romanian_stemmer
     if lang == 'en':
-        stemmer = EnglishStemmer()
+        stemmer = english_stemmer
     stopwords_cnt = {}
     with open(f'legislatie/legislatie_completa_{lang}.tsv') as tsvfile:
         tsv_reader = csv.reader(tsvfile, delimiter='\t')

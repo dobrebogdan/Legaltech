@@ -1,6 +1,5 @@
 import csv
 import math
-import gensim
 import Legaltech.article as article
 import Legaltech.utils as utils
 
@@ -16,9 +15,9 @@ def dist_between_coords(coords1, coords2):
     return dist
 
 
-def get_top_suggestions_from_text(current_text, limit=10):
+def get_top_suggestions_from_text(current_text, lang='ro', limit=10):
     distances = []
-    [distances.append((dist_between_coords(utils.text_to_coords(current_text), article.coords), article)) for article in articles]
+    [distances.append((dist_between_coords(utils.text_to_coords(current_text, lang=lang), article.coords), article)) for article in articles]
     sorted_distances = sorted(distances)
     sorted_articles = []
     for distance in sorted_distances:
@@ -41,11 +40,15 @@ def get_top_suggestions_from_article(current_article, limit=10):
     return sorted_articles
 
 
-def add_articles_from_file(filename):
+def add_articles_from_file(filename, lang='ro'):
     with open(filename) as tsvfile:
         tsv_reader = csv.reader(tsvfile, delimiter='\t')
         for line in tsv_reader:
-            articles.append(article.Article(line[2], utils.text_to_coords(line[2]), f"{line[1]}_{line[0]}"))
+            articles.append(article.Article(line[2], utils.text_to_coords(line[2], lang=lang), f"{line[1]}_{line[0]}"))
 
-lang = 'ro'
-add_articles_from_file(f'Legaltech/legislatie/legislatie_completa_{lang}.tsv')
+
+def load_articles_for_language(lang='ro'):
+    print('Started')
+    articles.clear()
+    add_articles_from_file(f'Legaltech/legislatie/legislatie_completa_{lang}.tsv', lang=lang)
+    print('Ended')

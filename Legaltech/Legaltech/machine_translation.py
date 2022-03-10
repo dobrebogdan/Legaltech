@@ -1,18 +1,13 @@
 import csv
-from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 from build_stopwords import build_stopwords
+from googletrans import Translator
 
+translator = Translator()
 
-model = M2M100ForConditionalGeneration.from_pretrained('facebook/m2m100_418M')
-tokenizer = M2M100Tokenizer.from_pretrained('facebook/m2m100_418M')
-
-tokenizer.src_lang = "ro"
 
 def translate_ro_to_en(romanian_text):
-    encoded_romanian_text = tokenizer(romanian_text, return_tensors="pt")
-    generated_english_tokens = model.generate(**encoded_romanian_text, forced_bos_token_id=tokenizer.get_lang_id("en"))
-    romanian_text = tokenizer.batch_decode(generated_english_tokens, skip_special_tokens=True)
-    return romanian_text
+    english_text = translator.translate(romanian_text)
+    return english_text.text
 
 
 def build_en_resources():

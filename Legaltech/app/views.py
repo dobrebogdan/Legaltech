@@ -11,6 +11,15 @@ lang = 'ro'
 load_articles_for_language(lang)
 
 @csrf_exempt
+def set_language(request):
+    new_lang = request.POST.get('param')
+    if new_lang in ['en', 'ro']:
+        global lang
+        lang = new_lang
+        load_articles_for_language(lang)
+    return JsonResponse({'response': 'ok'})
+
+@csrf_exempt
 def get_laws(request):
     text = request.POST.get('param')
     laws = get_top_suggestions_from_text(text, lang=lang)

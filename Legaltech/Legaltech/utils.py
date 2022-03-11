@@ -42,6 +42,7 @@ def get_extended_stopwords(lang='ro'):
     stop_words.extend(legal_stopwords)
     return stop_words
 
+
 # method that turns a text into a list of stemmed words (tokens).
 def text_to_tokens(curr_str, lang='ro'):
     stemmer = romanian_stemmer
@@ -75,11 +76,14 @@ def text_to_tokens(curr_str, lang='ro'):
     return good_tokens
 
 
+romanian_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.ro')
+english_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.en')
+
+
 def text_to_coords(curr_str, lang='ro'):
-    stemmer = romanian_stemmer
+    model = romanian_model
     if lang == 'en':
-        stemmer = english_stemmer
-    model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.{lang}')
+        model = english_model
     # get the stemmed tokens from text
     tokens = text_to_tokens(curr_str, lang=lang)
     # the sum vector of all vectors of words that are found in the model's vocabulary
@@ -105,10 +109,7 @@ def text_to_coords(curr_str, lang='ro'):
 
     # No relevant references
     if sum == []:
-        stopword = 'articol'
-        if lang == 'en':
-            stopword = 'article'
-        return model.wv[stemmer.stem(stopword)]
+        return [0.0] * 100
 
     # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt

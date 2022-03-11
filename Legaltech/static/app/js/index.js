@@ -15,9 +15,6 @@ function reloadLawResults(outputJSON) {
 function reloadCaseResults(outputJSON) {
     const jsonObj = JSON.parse(outputJSON);
     const outputList = jsonObj.response;
-    console.log('!!');
-    console.log(outputList);
-    console.log('--');
     const caseResultsList = document.getElementById("caseResultsList");
     caseResultsList.innerHTML = '';
     for(var i = 0; i < outputList.length; i++) {
@@ -27,6 +24,10 @@ function reloadCaseResults(outputJSON) {
         node.appendChild(document.createElement('HR'))
         caseResultsList.appendChild(node);
     }
+}
+
+function langSelectFinish(outputJSON) {
+    document.getElementById("loader").style.visibility = "hidden";
 }
 
 function sendHttpRequest(theUrl, param, callback)
@@ -54,5 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const obiectInput = document.getElementById("obiectInput");
         const input = [obiectInput.value, tribunalInput.value];
         sendHttpRequest("http://127.0.0.1:8000/app/getcases", input, reloadCaseResults);
+    });
+    const langSelect = document.getElementById("langSelect");
+    langSelect.addEventListener('change', (event) => {
+        const newLang = event.target.value;
+        document.getElementById("loader").style.visibility = "visible";
+        sendHttpRequest("http://127.0.0.1:8000/app/setlang", newLang, langSelectFinish);
     });
 });

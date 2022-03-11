@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('getlaws', views.get_laws, name='get_laws'),
-    path('getcases', views.get_cases, name='get_cases')
+    path('getcases', views.get_cases, name='get_cases'),
+    path('setlang', views.set_language, name='set_language')
 ]

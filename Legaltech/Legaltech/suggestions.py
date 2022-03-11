@@ -48,7 +48,5 @@ def add_articles_from_file(filename, lang='ro'):
 
 
 def load_articles_for_language(lang='ro'):
-    print('Started')
     articles.clear()
     add_articles_from_file(f'Legaltech/legislatie/legislatie_completa_{lang}.tsv', lang=lang)
-    print('Ended')

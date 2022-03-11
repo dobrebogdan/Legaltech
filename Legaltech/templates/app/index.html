@@ -8,12 +8,18 @@
     </head>
     <div>
         <h1>Legal assistant</h1>
+        <div id="loader" class="loader">
+        </div>
         <div id="content-container">
             <div id="lawSearchArea" class="search-area"/>
                 <h2>Search for laws</h2>
-                <input id="lawSearchInput" type="text" placeholder="Type something..." autocomplete="off"/>
-                <button id="lawSearchButton">Search</button>
-                <ul id="lawResultsList" />
+            <input id="lawSearchInput" type="text" placeholder="Type something..." autocomplete="off">
+            <select name="langs" id="langSelect">
+                <option value="ro">ro</option>
+                <option value="en">en</option>
+            </select>
+            <button id="lawSearchButton">Search</button>
+            <ul id="lawResultsList" />
             </div>
             <div id="caseSearchArea" class="search-area"/>
                 <h2>Search for cases</h2>

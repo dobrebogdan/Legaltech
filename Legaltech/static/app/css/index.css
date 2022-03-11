@@ -4,10 +4,46 @@ body {
 }
 
 button {
+    width: 80px;
+    height: 40px;
     background-color: #FFFFFF;
 }
+
 hr {
     color: #AB3428;
+}
+
+textarea {
+    width: 600px;
+    height: 100px;
+}
+
+#loader {
+    border-left: 20px solid red;
+    border-right: 20px solid green;
+    border-top: 20px solid yellow;
+    border-bottom: 20px solid blue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: turning 1.7s infinite ease, round 1.7s infinite ease;
+    visibility: hidden;
+}
+
+@keyframes turning {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+}
+
+#langSelect {
+    height: 30px;
+    width: 60px;
 }
 
 #content-container {

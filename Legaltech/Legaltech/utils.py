@@ -9,6 +9,7 @@ english_stemmer = EnglishStemmer()
 romanian_pipeline = spacy.load('ro_core_news_md')
 english_pipeline = spacy.load('en_core_web_md')
 
+
 def replace_nonletters(curr_str):
     for i in range(0, len(curr_str)):
         if (not curr_str[i] == " ") and (not curr_str[i].isalpha()):

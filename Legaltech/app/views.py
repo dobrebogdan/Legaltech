@@ -25,7 +25,7 @@ def get_laws(request):
     laws = get_top_suggestions_from_text(text, lang=lang)
     response = []
     for law in laws:
-        response.append(law.text)
+        response.append(f"ID: {law.id}; {law.text}")
     return JsonResponse({'response': response})
 
 @csrf_exempt

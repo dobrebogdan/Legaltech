@@ -1,43 +1,53 @@
 {
   "spete": [
     {
+      "id": "1",
       "text": "Minorul R, in varsta de 15 ani, este pus sub interdictie judecatoreasca si locuia in casa parinteasca cu tutorele sau T, singura ruda ramasa dupa decesele parintilor. La data de 5 iulie 2019, intro-o criza de furie, R l-a atacat pe T si i-a produs leziuni grave in zona capului, acesta din urma fiind transportat de urgenta la spital. Imediat dupa aceea, R a luat autoturismul din proprietatea lui T si, in timp ce conducea pe strada principala, a intrat in coliziune pe contrasens cu un alt autoturism, condus de V, producand avarierea autoturismelor in proportie de aproximativ 35% si vatamarea grava a integritatii corporale a lui V",
       "articole" : ["1812"]
 
     },
     {
+      "id": "2",
       "text":"La sarbatorirea majoratului lui F, fiul vecinului sau, D, i-a facut o promisiune de donatie in forma autentica cu privire la un apartament situat in Cluj, intrucat era atasat de acesta si ar fi dorit sa-l stimuleze sa urmeze cursurile unei facultati in acest oras. F a acceptat in forma autentica promisiunea si ulterior a realizat lucrari de amenajare a apartemntului in valoare de 10000 lei. Dupa cateva luni de la terminarea liceului, F a plecat in Franta, unde si-a gasit un loc de munca. D este nemultumit de intreaga situatie, cu atat mai mult cu cat nu se astepta ca F sa nu-si continue studiile in Cluj. Pentru acest motiv, D este tentat sa vanda apartamentul unui tert.",
       "articole": ["1454", "1462"]
     },
     {
+      "id": "3",
       "text": "Prin actiunea introdusa la data de 10 iunie 2018 pe rolul Judecatoriei Timisoara, reclamantul R l-a cemat in judecata pe paratul P pentru ca, prin hotararea ce se va pronunta, sa se dispuna obligarea paratului la restituirea in deplina proprietate si posesie a terenului in suprafata de 2000 mp situat in Timisoara. La data de 20 august 2018, prin contractul de vanzare incheiat intre P si J, a fost transferat dreptul litigios asupra terenului cu un pret avantajos catre J, acesta din urma fiind judecator la Judecatoria Timisoara si promitent cumparator in promisiunea bilaterala de vanzare incheiata la data de 10 februarie 2018 cu P.",
       "articole": ["1664", "2093"]
     },
     {
+      "id": "4",
       "text": "La data de 5 aprilie 2019, a fost incheiat un contract intre societatile C SRL si D SRL pentru livrarea unor materiale de constructie la patru termene precis stabilite, a caror respectare era de esenta contractului. In contract s-a stipulat un pact comisoriu in sensul ca, pentru neindeplinirea obligatiei de livrare a primei cantitati de materiale, in valoare totala de 500000 de lei, la data de 15 mai 2019, contractul se reziliaza de drept, D SRL fiind considerata de drept in intarziere. In fapt, D SRL nu a livrat materialele la termenul convenit. Desi la data de 20 mai 2019 C SRL a notificat debitoarea cu privire la desfiintarea de drept a contractului la termenul incalcat, D SRL a livrat totusi cantitatea de materiale la 25 mai 2019. Totodata, a trimis si factura catre C SRL pentru plata pretului materialelor in termen de 3 zile, sub sanctiunea unor penalitati de 0.5% din suma datorata pe zi de intarziere.",
       "articole": ["1956"]
     },
     {
+      "id": "5",
       "text": "Intrucat R avea o datorie personala la C, in suma de 25000 lei, pe care nu ar fi putut sa o restituie la data scadentei, 10 iulie 2015, P, proaspat sot al acesteia, a achitat datoria catre creditor pentru a-si dovedi sentimentele fata de R si avand acordul acesteia. C a primit plata cu buna-credinta, mai ales ca P mentionase ca achitarea ar fi un cadou pentru sotia lui. La data de 1 octombrie 2018, P si R s-au separat in fapt din cauze imputabile exclusiv lui R. In raport de aceasta situatie, P poate obtine restituirea sumei:",
       "articole": ["1471", "1781", "1788"]
     },
     {
+      "id": "6",
       "text": "La data de 1 aprilie 2017, arhitectul W a incheiat un contract de locatiune cu L pentru un spatiu locativ situat la parterul unui imobil, cu scopul desfasurarii activitatii profesionale a unui cabinet de arhitectura pentru care W era inregistrat ca persoana fizica autorizata. Conform vointei exprese a partilor, contractul a fost incheiat pe durata nedeterminata si inregistrat la Administratia financiara. Intrucat afacerea nu a mers foarte bine, la data de 1 aprilie 2018, W a incetat sa mai plateasca chiria si a eliberat spatiul inchiriat.",
       "articole": ["2218", "2225", "2238", "2264"]
     },
     {
+      "id": "7",
       "text": "Prin contractul de intretinere incheiat in forma autentica la data de 20 septembrie 2017, F s-a obligat fata de G sa-i asigure intretinerea pentru toata durata vietii in schimbul transferului dreptului de proprietate asupra unui teren, proprietatea lui G, si a obligatiei acestuia din urma de a cultiva terenul si a valorifica recolta in favoarea lui F> Dupa incheierea contractului, F si-a indeplinit corespunzator obligatia de intretinere, spre deosebire de G, care nu a prestat activitatile la care se obligase.",
       "articole": ["2697"]
     },
     {
+      "id": "8",
       "text": "X i-a vandut lui Y un ceas unicat cu pretul de 25000 lei, care urma sa fie platit in 10 rate lunare egale. Predarea bunului catre cumparator a avut loc la data incheierii contractului, stabilindu-se ca X isi rezerva proprietatea bunului pana la plata integrala a pretului. Y nu a achitat ultima rata a pretului. ",
       "articole": ["2195", "2196"]
     },
     {
+      "id": "9",
       "text": "Ca urmare a publicarii unor articole defaimatoare de catre J, jurnalist la ziarul online Sub lupa, detinut de Societatea XX SRL, prin care T era numit tiran sau maimutoi fiorosm T nu s-a mai inscris la concurs si a pierdut sansa de a fi desemnat director al Teatrului de balet din oras, desi ar fi avut cele mai mari sanse fata de experienta administrativa si manageriala a contracanditatilor sai. Mai mult, J a continuat campania de denigrare a lui T si dupa desemnarea noului director, prin publicarea saptamanala a unui articol defaimator, cu scopul vadit de a-l supune pe T la umilinte si a-l determina sa-si dea demisia din teatru, avand in vedere ca sotia lui J era subalterna lui T.",
       "articole": ["695"]
     },
     {
+      "id": "10",
       "text": "In baza unui contract de locatiune, incheiat la data de 1 iulie 2016, X detine un imobil din proprietatea lui Y pe termen de 3 ani. La data de 10 martie 2018, X incheie cu Z un contract de vanzare, cumparatorul fiind de buna credinta si in deplina cunostiinta de cauza cu privire la situatia juridica a imobilului.",
       "articole": ["2123"]
     }

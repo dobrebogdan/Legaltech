@@ -1,5 +1,5 @@
 import gensim
-from utils import text_to_tokens
+import utils
 import csv
 
 
@@ -10,15 +10,15 @@ for lang in ['ro', 'en']:
         with open(filename) as tsvfile:
             tsv_reader = csv.reader(tsvfile, delimiter='\t')
             for line in tsv_reader:
-                train_tokens.append(text_to_tokens(line[2]))
+                train_tokens.append(utils.text_to_tokens(line[2]))
 
 
     add_tokens_from_file(f'legislatie/legislatie_completa_{lang}.tsv')
 
     # Word2Vec is used to turn words into numerical vectors, which are then averaged to obtain a vector for a tweet
     # Multiple tests were done and the parameters which behaved the best were selected
-    model = gensim.models.Word2Vec(min_count=5,
-                                   window=10,
+    model = gensim.models.Word2Vec(min_count=2,
+                                   window=6,
                                    sample=5e-5,
                                    alpha=0.1,
                                    min_alpha=0.01,

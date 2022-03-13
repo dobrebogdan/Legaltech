@@ -77,9 +77,13 @@ def text_to_tokens(curr_str, lang='ro'):
     return good_tokens
 
 
-romanian_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.ro')
-english_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.en')
-
+romanian_model = None
+english_model = None
+try:
+    romanian_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.ro')
+    english_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.en')
+except:
+    pass
 
 def text_to_coords(curr_str, lang='ro'):
     model = romanian_model
@@ -110,7 +114,7 @@ def text_to_coords(curr_str, lang='ro'):
 
     # No relevant references
     if sum == []:
-        return [0.0] * 100
+        return [0.0001] * 100
 
     # divide to the number of words that exist in the model's vocabulary to get the average
     sum = sum / cnt

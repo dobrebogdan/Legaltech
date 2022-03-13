@@ -13,9 +13,14 @@ hr {
     color: #AB3428;
 }
 
-textarea {
+search-area {
     width: 600px;
-    height: 100px;
+    height: 300px;
+}
+
+#lawSearchInput {
+    width: 600px;
+    height: 30px;
 }
 
 #loader {
@@ -42,7 +47,7 @@ textarea {
 }
 
 #langSelect {
-    height: 30px;
+    height: 40px;
     width: 60px;
 }
 

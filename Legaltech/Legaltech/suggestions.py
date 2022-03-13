@@ -18,7 +18,7 @@ def dist_between_coords(coords1, coords2):
 """
 
 
-def get_top_suggestions_from_text(current_text, lang='ro', limit=10):
+def get_top_suggestions_from_text(current_text, lang='ro', limit=20):
     distances = []
     [distances.append((dist_between_coords(utils.text_to_coords(current_text, lang=lang), article.coords), article)) for article in articles]
     sorted_distances = sorted(distances)

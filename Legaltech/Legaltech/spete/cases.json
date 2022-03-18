@@ -1,0 +1,55 @@
+{
+  "spete": [
+    {
+      "id": "1",
+      "text": "The minor R, aged 15, is placed under judicial interdiction and lived in his parents' house with his guardian T, the only relative left after his parents' deaths. On July 5, 2019, in a fit of rage, R attacked T and caused serious injuries to his head, the latter being transported urgently to the hospital. Immediately afterwards, R took the car from T's property and, while driving on the main street, collided head-on with another V-driven car, causing approximately 35 \\% damage to the cars and serious injury. of V.'s bodily integrity.",
+      "articole" : ["1812"]
+
+    },
+    {
+      "id": "2",
+      "text":"At the celebration of F's coming of age, his neighbor's son, D, promised him a donation in authentic form regarding an apartment located in Cluj, as he was attached to it and would have liked to encourage him to attend a college. in this city. F accepted the promise in an authentic form and subsequently carried out works for the arrangement of the apartment in the amount of 10,000 lei. A few months after graduating from high school, F left for France, where he found a job. D is dissatisfied with the whole situation, especially since F was not expected to continue his studies in Cluj. For this reason, D is tempted to sell the apartment to a third party.",
+      "articole": ["1454", "1462"]
+    },
+    {
+      "id": "3",
+      "text": "By the action filed on June 10, 2018 on the role of the Timisoara Court, plaintiff R sued the defendant P so that, by the decision that will be pronounced, to order the defendant to return in full ownership and possession of the land in surface of 2000 sqm located in Timisoara. On August 20, 2018, by the contract of sale concluded between P and J, the disputed right over the land was transferred with an advantageous price to J, the latter being a judge at the Timisoara Court and promising buyer in the bilateral promise of sale concluded on of February 10, 2018 with P.",
+      "articole": ["1664", "2093"]
+    },
+    {
+      "id": "4",
+      "text": "On April 5, 2019, a contract was concluded between the companies C SRL and D SRL for the delivery of construction materials at four precisely established deadlines, compliance with which was the essence of the contract. The contract stipulated a commission agreement in the sense that, for non-fulfillment of the obligation to deliver the first quantity of materials, in a total amount of 500,000 lei, on May 15, 2019, the contract is terminated by law, D SRL being considered by law in delay. In fact, D SRL did not deliver the materials on time. Although on May 20, 2019 C SRL notified the debtor regarding the legal termination of the contract at the violated deadline, D SRL still delivered the quantity of materials on May 25, 2019. At the same time, it sent the invoice to C SRL for the payment of the price of the materials. within 3 days, under penalty of 0.5 \\% of the amount due per day of delay.",
+      "articole": ["1956"]
+    },
+    {
+      "id": "5",
+      "text": "As R had a personal debt to C, in the amount of 25000 lei, which he could not have repaid on the due date, July 10, 2015, P, her new husband, paid the debt to the creditor in order to prove your feelings towards R and with her consent. He received the payment in good faith, especially since P had mentioned that the payment would be a gift to his wife. On October 1, 2018, P and R actually separated due to causes attributable exclusively to R. In relation to this situation, P can obtain a refund.",
+      "articole": ["1471", "1781", "1788"]
+    },
+    {
+      "id": "6",
+      "text": "On April 1, 2017, the architect W concluded a lease with L for a residential space located on the ground floor of a building, in order to carry out the professional activity of an architectural firm for which W was registered as an authorized natural person. According to the express will of the parties, the contract was concluded for an indefinite period and registered with the Financial Administration. As the business did not go very well, on April 1, 2018, W stopped paying the rent and vacated the rented space.",
+      "articole": ["2218", "2225", "2238", "2264"]
+    },
+    {
+      "id": "7",
+      "text": "By the maintenance contract concluded in authentic form on September 20, 2017, F undertook G to ensure his maintenance for the rest of his life in exchange for the transfer of ownership of a land, G's property, and his obligation after cultivating the land and capitalizing on the harvest in favor of F> After concluding the contract, F properly fulfilled his maintenance obligation, unlike G, who did not perform the activities he had undertaken.",
+      "articole": ["2697"]
+    },
+    {
+      "id": "8",
+      "text": "X sold Y a unique watch with a price of 25,000 lei, which was to be paid in 10 equal monthly installments. The delivery of the good to the buyer took place on the date of concluding the contract, establishing that X reserves the ownership of the good until the full payment of the price. Y did not pay the last installment of the price.",
+      "articole": ["2195", "2196"]
+    },
+    {
+      "id": "9",
+      "text": "As a result of the publication of defamatory articles by J, journalist at the online newspaper Sub lupa, owned by Societatea XX SRL, by which T was called tyrant or monkey fiercely T did not register for the contest and lost the chance to be appointed director of the Ballet Theater in the city, although he would have had the best chances compared to the administrative and managerial experience of his opponents. Moreover, J continued the campaign to denigrate T even after the appointment of the new director, by publishing a defamatory article weekly, with the obvious purpose of humiliating T and causing him to resign from the theater, given that J's wife was T's subordinate.",
+      "articole": ["695"]
+    },
+    {
+      "id": "10",
+      "text": "Based on a lease agreement, concluded on July 1, 2016, X owns a property owned by Y for a term of 3 years. On March 10, 2018, X concludes with Z a sale contract, the buyer being in good faith and in full knowledge of the matter regarding the legal situation of the property.",
+      "articole": ["2123"]
+    }
+  ]
+}

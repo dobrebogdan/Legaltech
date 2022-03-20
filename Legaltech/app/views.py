@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from Legaltech.suggestions import get_top_suggestions_from_text, load_articles_for_language
+from Legaltech.classification import get_text_classification
 from Legaltech.portal_just import get_ids_and_solutions, get_cases
+
 
 def index(request):
     return render(request, 'app/index.html', {})
@@ -39,3 +41,9 @@ def get_cases(request):
         institutie = param[1]
     cases = get_ids_and_solutions(obiect_dosar=obiect_dosar, institutie=institutie)
     return JsonResponse({'response': cases})
+
+@csrf_exempt
+def get_classification(request):
+    text = request.POST.get('param')
+    classification = get_text_classification(text, lang=lang)
+    return JsonResponse({'response': classification})

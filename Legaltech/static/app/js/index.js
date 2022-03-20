@@ -26,6 +26,13 @@ function reloadCaseResults(outputJSON) {
     }
 }
 
+function reloadVerdict(outputJSON) {
+    const jsonObj = JSON.parse(outputJSON);
+    const verdict = jsonObj.response;
+    const verdictArea = document.getElementById("verdictArea");
+    verdictArea.innerHTML = verdict;
+}
+
 function langSelectFinish(outputJSON) {
     document.getElementById("loader").style.visibility = "hidden";
 }
@@ -55,6 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const obiectInput = document.getElementById("obiectInput");
         const input = [obiectInput.value, tribunalInput.value];
         sendHttpRequest("http://127.0.0.1:8000/app/getcases", input, reloadCaseResults);
+    });
+    const evaluateButton = document.getElementById("evaluateButton");
+    evaluateButton.addEventListener("click", () => {
+        const lawSearchInput = document.getElementById("lawSearchInput");
+        sendHttpRequest("http://127.0.0.1:8000/app/getclassification", lawSearchInput.value, reloadVerdict);
     });
     const langSelect = document.getElementById("langSelect");
     langSelect.addEventListener('change', (event) => {

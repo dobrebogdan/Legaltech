@@ -49,11 +49,19 @@ F1 score: {f1_score(y_pred, y_test)}
 """)
 
 
+def grid_search_svm():
+    for C in [0.1, 1, 10]:
+        for gamma in [0.01, 0.1, 1]:
+            clf = make_pipeline(StandardScaler(), SVC(C=C, gamma=gamma))
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            print_res(y_pred, y_test, model_name='SVM')
+
+
 def svm_classifier():
     clf = make_pipeline(StandardScaler(), SVC(gamma='auto'))
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
-    print(y_pred)
     print_res(y_pred, y_test, model_name='SVM')
 
 
@@ -94,9 +102,9 @@ def rnn_classifier():
 
 
 
-svm_classifier()
-random_forest_classifier()
-xgboost_classifier()
-rnn_classifier()
-
+# svm_classifier()
+# random_forest_classifier()
+# xgboost_classifier()
+# rnn_classifier()
+grid_search_svm()
 

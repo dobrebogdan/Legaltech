@@ -6,9 +6,6 @@ from nltk.stem.snowball import RomanianStemmer, EnglishStemmer
 romanian_stemmer = RomanianStemmer()
 english_stemmer = EnglishStemmer()
 
-romanian_pipeline = spacy.load('ro_core_news_md')
-english_pipeline = spacy.load('en_core_web_md')
-
 
 def replace_nonletters(curr_str):
     for i in range(0, len(curr_str)):
@@ -58,15 +55,12 @@ def text_to_tokens(curr_str, lang='ro'):
     curr_str = curr_str.lower()
 
     # Returns an object of type Doc, which is a sequence of Token objects
-    nlp = romanian_pipeline
-    if lang == 'en':
-        nlp = english_pipeline
-    tokens = nlp(curr_str)
+    tokens = curr_str.split()
     # A list of valid tokens
     good_tokens = []
     for token in tokens:
         # Gets the stemmed token from the Token object
-        stem = stemmer.stem(token.text)
+        stem = stemmer.stem(token)
         # Checks token validity
         if stem == "" or stem in stop_words:
             continue
@@ -83,7 +77,11 @@ try:
     romanian_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.ro')
     english_model = gensim.models.Word2Vec.load(f'Legaltech/word2vec.model.en')
 except:
-    pass
+    try:
+        romanian_model = gensim.models.Word2Vec.load(f'word2vec.model.ro')
+        english_model = gensim.models.Word2Vec.load(f'word2vec.model.en')
+    except:
+        pass
 
 def text_to_coords(curr_str, lang='ro'):
     model = romanian_model
@@ -113,7 +111,7 @@ def text_to_coords(curr_str, lang='ro'):
                 pass
 
     # No relevant references
-    if sum == []:
+    if len(sum) == 0:
         return [0.0001] * 100
 
     # divide to the number of words that exist in the model's vocabulary to get the average

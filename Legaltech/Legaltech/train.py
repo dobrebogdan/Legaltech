@@ -25,8 +25,8 @@ for lang in ['ro', 'en']:
                                    workers=4)
 
     # Building the model's vocabulary and training the model
-    model.build_vocab(train_tokens, progress_per=100)
+    model.build_vocab(train_tokens, progress_per=10)
     model.train(train_tokens, total_examples=model.corpus_count, epochs=100)
 
-    # Keeping only the current vectors to save memory
+    # Keeping only the current models to save memory
     model.save(f'word2vec.model.{lang}')

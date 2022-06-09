@@ -34,7 +34,7 @@ def add_articles_from_file(filename, lang='ro'):
     with open(filename) as tsvfile:
         tsv_reader = csv.reader(tsvfile, delimiter='\t')
         for line in tsv_reader:
-            articles.append(article.Article(line[2], utils.text_to_coords(line[2], lang=lang), f"{line[0]}"))
+            articles.append(article.Article(line[2], utils.text_to_coords(line[2], lang=lang), f"{line[0]}", line[1]))
 
 
 def load_articles_for_language(lang='ro'):

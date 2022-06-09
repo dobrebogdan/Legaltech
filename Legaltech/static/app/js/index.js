@@ -10,6 +10,7 @@ function reloadLawResults(outputJSON) {
         node.appendChild(document.createElement('HR'))
         lawResultsList.appendChild(node);
     }
+    document.getElementById("loader").style.visibility = "hidden";
 }
 
 function reloadCaseResults(outputJSON) {
@@ -24,6 +25,7 @@ function reloadCaseResults(outputJSON) {
         node.appendChild(document.createElement('HR'))
         caseResultsList.appendChild(node);
     }
+    document.getElementById("loader").style.visibility = "hidden";
 }
 
 function reloadVerdict(outputJSON) {
@@ -31,6 +33,7 @@ function reloadVerdict(outputJSON) {
     const verdict = jsonObj.response;
     const verdictArea = document.getElementById("verdictArea");
     verdictArea.innerHTML = verdict;
+    document.getElementById("loader").style.visibility = "hidden";
 }
 
 function langSelectFinish(outputJSON) {
@@ -54,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lawSearchButton = document.getElementById("lawSearchButton");
     lawSearchButton.addEventListener("click", () => {
         const lawSearchInput = document.getElementById("lawSearchInput");
+        document.getElementById("loader").style.visibility = "visible";
         sendHttpRequest("http://127.0.0.1:8000/app/getlaws", lawSearchInput.value, reloadLawResults);
     });
     const caseSearchButton = document.getElementById("caseSearchButton");
@@ -61,11 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const tribunalInput = document.getElementById("tribunalInput");
         const obiectInput = document.getElementById("obiectInput");
         const input = [obiectInput.value, tribunalInput.value];
+        document.getElementById("loader").style.visibility = "visible";
         sendHttpRequest("http://127.0.0.1:8000/app/getcases", input, reloadCaseResults);
     });
     const evaluateButton = document.getElementById("evaluateButton");
     evaluateButton.addEventListener("click", () => {
         const lawSearchInput = document.getElementById("lawSearchInput");
+        document.getElementById("loader").style.visibility = "visible";
         sendHttpRequest("http://127.0.0.1:8000/app/getclassification", lawSearchInput.value, reloadVerdict);
     });
     const langSelect = document.getElementById("langSelect");
